@@ -1,0 +1,42 @@
+﻿<Window x:Class="MariaTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:MariaTask"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <ListBox x:Name="listBox" ItemsSource="{Binding Samples}" Grid.Column="0" Height="300" Width="400" HorizontalAlignment="Left" VerticalAlignment="Bottom" SelectedItem="{Binding SelectedSample}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Number}" />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding RemainSamplesCounter}" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:Cities}}}" SelectedItem="{Binding SelectedCityToCheck}"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="689,19,0,0" TextWrapping="Wrap" Text="{Binding CurrentSampleNum}" VerticalAlignment="Top" Width="100" Height="20"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="689,44,0,0" TextWrapping="Wrap" Text="{Binding CurrentSampleName}" VerticalAlignment="Top" Width="100" Height="20"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="689,69,0,0" TextWrapping="Wrap" Text="{Binding CurrentSampleCity}" VerticalAlignment="Top" Width="100" Height="20"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="689,94,0,0" TextWrapping="Wrap" Text="{Binding CurrentSamplePhone}" VerticalAlignment="Top" Width="100" Height="20"/>
+        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="689,119,0,0" TextWrapping="Wrap" Text="{Binding CurrentSampleDate}" VerticalAlignment="Top" Width="100" Height="20"/>
+        <Button x:Name="button" Content="Присвоить дату" HorizontalAlignment="Left" Margin="670,173,0,0" VerticalAlignment="Top" Width="120" Height="20" Command="{Binding AssignDate}"/>
+        <Button x:Name="button1" Content="Оставшиеся замеры" HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="120" Height="20" Command="{Binding CheckRemainSamples}"/>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="135,33,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding DateTimes}" SelectedItem="{Binding SelectedDateToCheck}"/>
+        <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" Margin="670,146,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding DateTimes}" SelectedItem="{Binding SelectedDateToInsert}"/>
+        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="574,19,0,0" TextWrapping="Wrap" Text="Номер замера" VerticalAlignment="Top" Width="100" Height="20"/>
+        <TextBlock x:Name="textBlock5_Copy" HorizontalAlignment="Left" Margin="574,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="20"><Run Language="ru-ru" Text="Имя Клиента"/></TextBlock>
+        <TextBlock x:Name="textBlock5_Copy1" HorizontalAlignment="Left" Margin="574,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="20"><Run Language="ru-ru" Text="Город клиента"/></TextBlock>
+        <TextBlock x:Name="textBlock5_Copy2" HorizontalAlignment="Left" Margin="574,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="20"><Run Language="ru-ru" Text="Телефон клиента"/></TextBlock>
+        <TextBlock x:Name="textBlock5_Copy3" HorizontalAlignment="Left" Margin="574,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="20"><Run Language="ru-ru" Text="Дата"/><Run Text=" замера"/></TextBlock>
+
+    </Grid>
+</Window>
